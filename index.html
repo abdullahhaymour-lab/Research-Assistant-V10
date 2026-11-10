@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Assistant V10</title>
+<style>
+:root {
+  --blue:#2f7de1;
+  --dark:#17365d;
+  --purple:#673ab7;
+  --bg:#f4f7fb;
+  --white:#fff;
+  --text:#26364a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+header{
+  background:white;
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 2px 12px #00000010;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.logo{font-size:21px;font-weight:bold;color:var(--blue)}
+.logo span{color:var(--purple)}
+button{
+  border:0;
+  border-radius:9px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+}
+.primary{background:var(--blue);color:white}
+.secondary{background:#eaf1fc;color:var(--blue)}
+.purple{background:var(--purple);color:white}
+main{max-width:1150px;margin:30px auto;padding:0 18px}
+.hero{
+  background:linear-gradient(120deg,#17365d,#2f7de1);
+  color:white;
+  padding:40px 30px;
+  border-radius:18px;
+  margin-bottom:25px;
+}
+.hero h1{font-size:30px;margin-top:0}
+.hero p{line-height:2;max-width:650px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+.card{
+  background:white;
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 3px 15px #00000008;
+  margin-bottom:16px;
+}
+.card h3{margin-top:0;color:var(--dark)}
+.icon{font-size:28px;margin-bottom:10px}
+.muted{color:#718096;font-size:13px;line-height:1.8}
+h2{color:var(--dark)}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #dce3ed;
+  border-radius:8px;
+  margin:7px 0 15px;
+  font-family:inherit;
+  background:white;
+}
+label{font-size:14px;font-weight:bold}
+.form{max-width:650px}
+.nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+.nav button{background:white;color:var(--dark)}
+.nav button.active{background:var(--blue);color:white}
+.stat{
+  background:#eef5ff;
+  padding:18px;
+  border-radius:12px;
+}
+.stat strong{font-size:25px;color:var(--blue);display:block}
+.badge{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:20px;
+  background:#e5f2e9;
+  color:#25844a;
+  font-size:12px;
+}
+.hidden{display:none!important}
+footer{text-align:center;padding:30px;color:#8994a5}
+table{width:100%;border-collapse:collapse}
+td,th{padding:12px;border-bottom:1px solid #eee;text-align:right}
+@media(max-width:600px){
+ .hero h1{font-size:23px}
+ header{padding:14px}
+ main{margin:18px auto}
+ .card{padding:17px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Research <span>Assistant</span> V10</div>
+  <button class="secondary" onclick="showPage('home')">الرئيسية</button>
+</header>
+
+<main>
+
+<section id="home">
+  <div class="hero">
+    <h1>مرحباً بك في Research Assistant V10</h1>
+    <p>
+      منصة متخصصة في دعم الأبحاث العلمية وتسهيل الوصول إلى
+      المشاركين المناسبين للدراسات والاستبيانات،
+      وربط الباحثين بالمشاركين والمؤسسات.
+    </p>
+    <button class="primary" onclick="showPage('register')">
+      ابدأ الآن
+    </button>
+    <button class="secondary" onclick="showPage('login')">
+      تسجيل الدخول
+    </button>
+  </div>
+
+  <h2>خدمات المنصة</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🔬</div>
+      <h3>الباحث</h3>
+      <p class="muted">إنشاء الدراسات والاستبيانات وإدارة المشاركين وتحليل النتائج.</p>
+      <button class="primary" onclick="selectRole('researcher')">دخول الباحث</button>
+    </div>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>المشارك</h3>
+      <p class="muted">إنشاء ملف شخصي والمشاركة في الدراسات والحصول على المكافآت.</p>
+      <button class="primary" onclick="selectRole('participant')">دخول المشارك</button>
+    </div>
+    <div class="card">
+      <div class="icon">🏥</div>
+      <h3>المؤسسات</h3>
+      <p class="muted">إدارة الدراسات المؤسسية وتقديم الاستبيانات للمراجعة والموافقة.</p>
+      <button class="primary" onclick="selectRole('institution')">دخول المؤسسة</button>
+    </div>
+    <div class="card">
+      <div class="icon">⚙️</div>
+      <h3>الإدارة</h3>
+      <p class="muted">إدارة المستخدمين والدراسات والمدفوعات والإحصائيات.</p>
+      <button class="purple" onclick="selectRole('admin')">لوحة الإدارة</button>
+    </div>
+  </div>
+</section>
+
+<section id="register" class="hidden">
+  <div class="card form">
+    <h2>إنشاء حساب جديد</h2>
+    <label>نوع الحساب</label>
+    <select id="role">
+      <option value="researcher">باحث</option>
+      <option value="participant">مشارك</option>
+      <option value="institution">مؤسسة</option>
+    </select>
+    <label>الاسم الكامل</label>
+    <input id="name" placeholder="الاسم الكامل">
+    <label>البريد الإلكتروني</label>
+    <input id="email" type="email" placeholder="example@email.com">
+    <label>رقم الهاتف</label>
+    <input id="phone" placeholder="+962">
+    <label>كلمة المرور</label>
+    <input id="password" type="password" placeholder="كلمة المرور">
+    <button class="primary" onclick="register()">إنشاء الحساب</button>
+    <p class="muted">هذه نسخة تجريبية ولا تحفظ الحسابات على خادم.</p>
+  </div>
+</section>
+
+<section id="login" class="hidden">
+  <div class="card form">
+    <h2>تسجيل الدخول</h2>
+    <label>البريد الإلكتروني</label>
+    <input id="loginEmail" type="email" placeholder="البريد الإلكتروني">
+    <label>كلمة المرور</label>
+    <input id="loginPassword" type="password" placeholder="كلمة المرور">
+    <button class="primary" onclick="login()">دخول</button>
+    <p class="muted">الدخول التجريبي متاح عبر اختيار أحد الأدوار من الصفحة الرئيسية.</p>
+  </div>
+</section>
+
+<section id="dashboard" class="hidden">
+  <h2 id="dashboardTitle">لوحة التحكم</h2>
+  <div class="nav" id="dashboardNav"></div>
+  <div id="dashboardContent"></div>
+  <button class="secondary" onclick="showPage('home')">العودة للرئيسية</button>
+</section>
+
+</main>
+
+<footer>
+  Research Assistant V10 © 2026
+  <p>منصة لدعم البحث العلمي وجمع البيانات</p>
+</footer>
+
+<script>
+let currentRole = "";
+let currentName = "مستخدم تجريبي";
+
+const pages = ["home","register","login","dashboard"];
+
+function showPage(id){
+  pages.forEach(p=>document.getElementById(p).classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function register(){
+  currentName = document.getElementById("name").value || "مستخدم تجريبي";
+  currentRole = document.getElementById("role").value;
+  if(!document.getElementById("email").value){
+    alert("يرجى إدخال البريد الإلكتروني");
+    return;
+  }
+  alert("تم تسجيل الحساب في العرض التجريبي");
+  openDashboard();
+}
+
+function login(){
+  alert("هذه شاشة دخول تجريبية. اختر نوع الحساب من الصفحة الرئيسية.");
+}
+
+function selectRole(role){
+  currentRole=role;
+  openDashboard();
+}
+
+function openDashboard(){
+  showPage("dashboard");
+  const names={
+    researcher:"لوحة تحكم الباحث",
+    participant:"لوحة تحكم المشارك",
+    institution:"لوحة تحكم المؤسسة",
+    admin:"لوحة إدارة المنصة"
+  };
+  document.getElementById("dashboardTitle").innerText=
+    names[currentRole]+" - "+currentName;
+
+  let tabs={
+    researcher:[
+      ["overview","الرئيسية"],
+      ["studies","الدراسات"],
+      ["create","إنشاء استبيان"],
+      ["participants","المشاركون"],
+      ["reports","التقارير"]
+    ],
+    participant:[
+      ["overview","الرئيسية"],
+      ["profile","ملفي الشخصي"],
+      ["available","الدراسات المتاحة"],
+      ["wallet","المحفظة"]
+    ],
+    institution:[
+      ["overview","الرئيسية"],
+      ["submit","تقديم دراسة"],
+      ["studies","الدراسات"],
+      ["reports","التقارير"]
+    ],
+    admin:[
+      ["overview","الرئيسية"],
+      ["users","المستخدمون"],
+      ["studies","الدراسات"],
+      ["payments","المدفوعات"],
+      ["settings","الإعدادات"]
+    ]
+  };
+
+  const nav=document.getElementById("dashboardNav");
+  nav.innerHTML="";
+  tabs[currentRole].forEach((t,i)=>{
+    let b=document.createElement("button");
+    b.innerText=t[1];
+    b.className=i===0?"active":"";
+    b.onclick=()=>{
+      [...nav.children].forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+      renderTab(t[0]);
+    };
+    nav.appendChild(b);
+  });
+  renderTab("overview");
+}
+
+function renderTab(tab){
+ const area=document.getElementById("dashboardContent");
+
+ if(tab==="overview"){
+  area.innerHTML=`
+  <div class="grid">
+   <div class="stat"><strong>0</strong>الدراسات</div>
+   <div class="stat"><strong>0</strong>المشاركات</div>
+   <div class="stat"><strong>0</strong>المستخدمون</div>
+   <div class="stat"><strong>0 JOD</strong>الرصيد التجريبي</div>
+  </div>
+  <div class="card"><h3>مرحباً بك</h3>
+  <p class="muted">يمكنك استخدام القائمة للوصول إلى خدمات حسابك.</p></div>`;
+ }
+
+ if(tab==="studies" || tab==="available"){
+  area.innerHTML=`
+  <div class="card">
+  <h3>الدراسات والاستبيانات</h3>
+  <p class="muted">ستظهر هنا الدراسات المنشورة بعد ربط قاعدة البيانات.</p>
+  <span class="badge">لا توجد دراسات حالياً</span>
+  </div>`;
+ }
+
+ if(tab==="create"){
+  area.innerHTML=`
+  <div class="card form">
+  <h3>إنشاء دراسة جديدة</h3>
+  <label>عنوان الدراسة</label>
+  <input placeholder="عنوان البحث">
+  <label>وصف الدراسة</label>
+  <textarea placeholder="وصف وأهداف الدراسة"></textarea>
+  <label>الفئة المستهدفة</label>
+  <select><option>ممرضون</option><option>أطباء</option>
+  <option>قابلات</option><option>جميع المشاركين</option></select>
+  <label>عدد المشاركين المطلوب</label>
+  <input type="number" placeholder="100">
+  <button class="primary" onclick="alert('نموذج تجريبي - يحتاج ربط قاعدة البيانات')">حفظ الدراسة</button>
+  </div>`;
+ }
+
+ if(tab==="profile"){
+  area.innerHTML=`
+  <div class="card form">
+  <h3>الملف الشخصي للمشارك</h3>
+  <label>الجنسية</label><input placeholder="الجنسية">
+  <label>بلد الإقامة</label><input placeholder="بلد الإقامة">
+  <label>بلد العمل</label><input placeholder="بلد العمل">
+  <label>العمر</label>
+  <select><option>18-24</option><option>25-30</option>
+  <option>31-40</option><option>41-50</option><option>أكثر من 50</option></select>
+  <label>المهنة</label>
+  <select><option>ممرض</option><option>طبيب</option><option>قابلة</option><option>أخرى</option></select>
+  <label>القطاع</label>
+  <select><option>خاص</option><option>حكومي</option><option>عسكري</option><option>جامعي</option></select>
+  <label>مكان العمل</label><input placeholder="اسم المستشفى أو المؤسسة">
+  <label>القسم</label>
+  <select><option>ICU</option><option>ER</option><option>OR</option><option>NICU</option><option>Medical</option><option>Surgical</option><option>أخرى</option></select>
+  <label>سنوات الخبرة</label><input type="number" placeholder="عدد السنوات">
+  <label>المؤهل العلمي</label>
+  <select><option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option><option>دكتوراه</option></select>
+  <button class="primary" onclick="alert('نموذج تجريبي')">حفظ الملف الشخصي</button>
+  </div>`;
+ }
+
+ if(tab==="wallet"){
+  area.innerHTML=`
+  <div class="card">
+  <h3>محفظتي</h3>
+  <div class="stat"><strong>0.00 JOD</strong>الرصيد التجريبي</div>
+  <p>الحد الأدنى لطلب السحب: 5 دنانير أردنية.</p>
+  <button class="primary" onclick="alert('ميزة السحب تحتاج ربط نظام الدفع')">طلب سحب الأموال</button>
+  <p class="muted">الأرصدة هنا تجريبية وليست أموالاً حقيقية.</p>
+  </div>`;
+ }
+
+ if(tab==="participants"){
+  area.innerHTML=`<div class="card"><h3>إدارة المشاركين</h3>
+  <p class="muted">ستظهر هنا ملفات المشاركين وبيانات الاستجابات.</p></div>`;
+ }
+
+ if(tab==="reports"){
+  area.innerHTML=`<div class="card"><h3>التقارير والتصدير</h3>
+  <button class="secondary" onclick="alert('التصدير يحتاج ربط البيانات')">Excel</button>
+  <button class="secondary" onclick="alert('التصدير يحتاج ربط البيانات')">SPSS</button>
+  </div>`;
+ }
+
+ if(tab==="submit"){
+  area.innerHTML=`<div class="card form">
+  <h3>تقديم دراسة للمراجعة</h3>
+  <label>اسم المؤسسة</label><input placeholder="اسم المؤسسة">
+  <label>عنوان الدراسة</label><input placeholder="عنوان الدراسة">
+  <label>تفاصيل الدراسة</label><textarea placeholder="التفاصيل"></textarea>
+  <button class="primary" onclick="alert('طلب تجريبي يحتاج نظام مراجعة')">إرسال للمراجعة</button>
+  </div>`;
+ }
+
+ if(tab==="users"){
+  area.innerHTML=`<div class="card"><h3>إدارة المستخدمين</h3>
+  <p>الباحثون والمشاركون والمؤسسات.</p></div>`;
+ }
+
+ if(tab==="payments"){
+  area.innerHTML=`<div class="card"><h3>إدارة المدفوعات</h3>
+  <p>إدارة مكافآت المشاركين وطلبات السحب.</p>
+  <p class="muted">هذه شاشة عرض فقط، ولا توجد معاملات مالية حقيقية.</p></div>`;
+ }
+
+ if(tab==="settings"){
+  area.innerHTML=`<div class="card"><h3>إعدادات المنصة</h3>
+  <label>اسم المنصة</label><input value="Research Assistant V10">
+  <label>عملة المنصة</label><input value="JOD">
+  <label>الحد الأدنى للسحب</label><input type="number" value="5">
+  <button class="primary" onclick="alert('إعداد تجريبي فقط')">حفظ</button>
+  </div>`;
+ }
+}
+</script>
+</body>
+</html>
